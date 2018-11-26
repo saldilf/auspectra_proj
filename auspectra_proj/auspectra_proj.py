@@ -250,7 +250,7 @@ def main(argv=None):
                 data_analysisNorm(args['workbook'])
         else:
             if args['table'] is True:
-                print("You've generated a non-normalized plot and a table")
+                #print("You've generated a non-normalized plot and a table")
                 data = data_analysis(args['workbook'])
                 df = pd.DataFrame(data)
                 render_mpl_table(df, header_columns=0, col_width=3.0)
@@ -267,6 +267,7 @@ def main(argv=None):
                 render_mpl_table(df, header_columns=0, col_width=3.0)
             else:
                 print("You've normalized the data but generated no plot nor table.")
+                #pass
         else:
             if args['table'] is True:
                 print("You've generated a table with non-normalized data and no plot")
@@ -276,6 +277,7 @@ def main(argv=None):
             else:
                 print("Default output: No table nor plot generated in data directory.")
                 print("Run the script with -h to see all of the available user input options.")
+                #pass
 
     return SUCCESS  # success
 
