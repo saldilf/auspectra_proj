@@ -85,8 +85,8 @@ class Test_main(unittest.TestCase):
     def testp(self):
         test_input = ['-p']
         main(test_input)
-        actual = hash('data/AuPlot.png')
-        expected = hash('data/AuPlotTest.png')
+        actual = hashp('data/AuPlot.png')
+        expected = hashp('data/AuPlotTest.png')
         self.assertTrue(expected == actual)
 
     def testt(self):
@@ -103,10 +103,22 @@ class Test_main(unittest.TestCase):
         expected = hashnp('data/AuPlotNormTest.png')
         self.assertTrue(expected == actual)
 
+    def testpt(self):
+        test_input = ['-p', '-t']
+        main(test_input)
+        actual = hashp('data/AuPlot.png')
+        expected = hashp('data/AuPlotTest.png')
+
+        actualT = hasht('data/DataTable.png')
+        expectedT = hasht('data/DataTableTest.png')
+        self.assertTrue(expected == actual)
+        self.assertTrue(expectedT == actualT)
+
+
 
 
 #only can test AuPlot.png, need other hash functions for AuPlotTest, table, etc...
-def hash(file):
+def hashp(file):
     BUF_SIZE = 1000
     sha1 = hashlib.sha1()
     with open('data/AuPlot.png', 'rb') as f:
