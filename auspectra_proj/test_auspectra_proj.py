@@ -81,12 +81,28 @@ class Test_parse_cmdline(unittest.TestCase):
         self.assertTrue(parse_cmdline(test_input)[0]['workbook'] == 'data/LongerTest.xlsx')
 
 class Test_main(unittest.TestCase):
-    def testGoodOutput(self):
+
+    def testp(self):
         test_input = ['-p']
         main(test_input)
         actual = hash('data/AuPlot.png')
         expected = hash('data/AuPlotTest.png')
         self.assertTrue(expected == actual)
+
+    def testt(self):
+        test_input = ['-t']
+        main(test_input)
+        actual = hasht('data/DataTable.png')
+        expected = hasht('data/DataTableTest.png')
+        self.assertTrue(expected == actual)
+
+    def testnp(self):
+        test_input = ['-n', '-p']
+        main(test_input)
+        actual = hashnp('data/AuPlotNorm.png')
+        expected = hashnp('data/AuPlotNormTest.png')
+        self.assertTrue(expected == actual)
+
 
 
 #only can test AuPlot.png, need other hash functions for AuPlotTest, table, etc...
@@ -101,6 +117,27 @@ def hash(file):
             sha1.update(data)
     return(sha1.hexdigest())
 
+def hasht(file):
+    BUF_SIZE = 1000
+    sha1 = hashlib.sha1()
+    with open('data/DataTable.png', 'rb') as f:
+        while True:
+            data = f.read(BUF_SIZE)
+            if not data:
+                break
+            sha1.update(data)
+    return(sha1.hexdigest())
+
+def hashnp(file):
+    BUF_SIZE = 1000
+    sha1 = hashlib.sha1()
+    with open('data/AuPlotNorm.png', 'rb') as f:
+        while True:
+            data = f.read(BUF_SIZE)
+            if not data:
+                break
+            sha1.update(data)
+    return(sha1.hexdigest())
 
 
 
