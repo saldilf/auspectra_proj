@@ -114,6 +114,17 @@ class Test_main(unittest.TestCase):
         self.assertTrue(expected == actual)
         self.assertTrue(expectedT == actualT)
 
+    def testptn(self):
+        test_input = ['-n', '-p', '-t']
+        main(test_input)
+        actual = hashnp('data/AuPlotNorm.png')
+        expected = hashnp('data/AuPlotNormTest.png')
+
+        actualT = hasht('data/DataTable.png')
+        expectedT = hasht('data/DataTableTest.png')
+        self.assertTrue(expected == actual)
+        self.assertTrue(expectedT == actualT)
+
 
 
 
